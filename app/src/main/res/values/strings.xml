@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Airsoft</string>
+    <string name="title_estatisticas">Estatísticas</string>
+    <string name="title_miequipe">Minha Equipe</string>
+    <string name="title_equipes">Equipes</string>
+    <string name="title_jogos">Jogos</string>
+</resources>

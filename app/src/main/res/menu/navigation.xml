@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_estatisticas"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Estatísticas"/>
+
+    <item
+        android:id="@+id/navigation_miequipe"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Minha Equipe"/>
+
+    <item
+        android:id="@+id/navigation_equipes"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Equipes"/>
+
+    <item
+        android:id="@+id/navigation_jogos"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Jogos"/>
+
+
+</menu>
