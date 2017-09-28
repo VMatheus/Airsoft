@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "747038741205",
+    "firebase_url": "https://airsoft-2017.firebaseio.com",
+    "project_id": "airsoft-2017",
+    "storage_bucket": "airsoft-2017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747038741205:android:36df07707b21908e",
+        "android_client_info": {
+          "package_name": "nof.airsoft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747038741205-2u2d74nr7m15h0mfihh19b2h3393grlj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGPMQymE76x-1Un99DatykxOWHzxqkqGI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

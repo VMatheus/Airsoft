@@ -17,80 +17,89 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity {
 
     private Button buttonSignin;
     private EditText editText_email;
     private EditText editText_senha;
     private TextView textView_register;
-    private ProgressDialog progressDialog;
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth mAuth;
+
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser() !=null){
-            finish();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-        }
+
+        mAuth = FirebaseAuth.getInstance();
+
         buttonSignin = (Button) findViewById(R.id.buttonSignin);
         editText_email = (EditText) findViewById(R.id.editText_email);
         editText_senha = (EditText) findViewById(R.id.editText_senha);
-        progressDialog = new ProgressDialog(this);
         textView_register = (TextView) findViewById(R.id.textView_register);
 
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-        buttonSignin.setOnClickListener(this);
-        textView_register.setOnClickListener(this);
+                if (firebaseAuth.getCurrentUser() != null){
 
-    }
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
 
-    private void userlogin() {
-        String email = editText_email.getText().toString().trim();
-        String senha = editText_senha.getText().toString().trim();
+                }
 
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Por favor digite seu email", Toast.LENGTH_SHORT).show();
-            return;
-        }
+            }
+        };
 
-        if (TextUtils.isEmpty(senha)) {
-            Toast.makeText(this, "Por favor digite sua senha", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        buttonSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        progressDialog.setMessage("Registrando Usuario...");
-        progressDialog.show();
+                iniciaLogin();
 
-        firebaseAuth.signInWithEmailAndPassword(email, senha)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        if (task.isSuccessful()){
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        }
+            }
+        });
 
-                    }
-                });
+        textView_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RegistroActivity.class));
+            }
+        });
 
     }
-
 
 
     @Override
-    public void onClick(View v) {
-        if (v == buttonSignin){
-            userlogin();
-            startActivity(new Intent(this, MainActivity.class));
-        }
-        if (v == textView_register){
-            finish();
-            startActivity(new Intent(this, RegistroActivity.class));
-        }
+    protected void onStart() {
+        super.onStart();
+
+        mAuth.addAuthStateListener(mAuthListener);
 
     }
+
+    public void iniciaLogin() {
+        String email = editText_email.getText().toString().trim();
+        String senha = editText_senha.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(senha)) {
+            Toast.makeText(this, "Usuário ou senha não preenchido", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+
+            mAuth.signInWithEmailAndPassword(email, senha)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Usuário ou senha incorreta", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+        }
+    }
+
 }
