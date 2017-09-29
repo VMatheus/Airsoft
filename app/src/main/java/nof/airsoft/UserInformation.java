@@ -7,13 +7,12 @@ package nof.airsoft;
 public class UserInformation {
     String nome;
     String contato;
+    String endereco;
 
-   public UserInformation(String nome, String contato, String endereco){
 
-    }
-
-    public UserInformation(String nome, String contato) {
+    public UserInformation(String nome, String contato, String endereco) {
         this.nome = nome;
         this.contato = contato;
+        this.endereco = endereco;
     }
 }
