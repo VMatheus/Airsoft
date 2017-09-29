@@ -4,25 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nof.airsoft.RegistroActivity">
+    tools:context="nof.airsoft.RegistroActivity"
+    android:background="@color/colorFundoLogin">
 
     <EditText
-        android:layout_margin="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:inputType="textEmailAddress"
-        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_height="45dp"
+        android:background="@drawable/input_background"
         android:layout_width="match_parent"
         android:hint="Email"
-        android:id="@+id/editText_email"/>
+        android:id="@+id/editText_email" />
 
     <EditText
-        android:layout_margin="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:padding="10dp"
+        android:layout_height="45dp"
+        android:background="@drawable/input_background"
+        android:layout_width="match_parent"
         android:inputType="textPassword"
         android:id="@+id/editText_senha"
-        android:hint="Senha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:hint="Senha" />
 
     <Button
+        android:background="@drawable/input_background"
+        android:layout_marginTop="10dp"
         android:id="@+id/buttonRegister"
         android:layout_gravity="center"
         android:text="Registrar"

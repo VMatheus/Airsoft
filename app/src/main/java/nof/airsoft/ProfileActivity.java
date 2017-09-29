@@ -19,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private FirebaseAuth firebaseAuth;
     private EditText editTextNome;
     private EditText editTextContato;
+    private EditText editTextEndereco;
     private Button buttonLogout;
     private Button buttonSalvar;
     private DatabaseReference databaseReference;
@@ -41,6 +42,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser user = firebaseAuth.getCurrentUser();
         buttonSalvar = (Button) findViewById(R.id.buttonSalvar);
         editTextNome = (EditText) findViewById(R.id.editTextNome);
+        editTextEndereco = (EditText) findViewById(R.id.editTextEndereco);
         editTextContato = (EditText) findViewById(R.id.editTextContato);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
 

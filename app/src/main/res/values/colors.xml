@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#152b3d</color>
     <color name="colorAccent">#898a8f</color>
     <color name="colorFundo">#0f1e2b</color>
+    <color name="colorFundoLogin">#2d597e</color>
+    <color name="colorBranca">#e6eaea</color>
 </resources>

@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (firebaseAuth.getCurrentUser() != null){
 
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                 }
 
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         String senha = editText_senha.getText().toString().trim();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(senha)) {
-            Toast.makeText(this, "Usuário ou senha não preenchido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Usuário e/ou senha não preenchido", Toast.LENGTH_SHORT).show();
             return;
         } else {
 
@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             } else {
-                                Toast.makeText(LoginActivity.this, "Usuário ou senha incorreta", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Usuário e/ou senha incorreta", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
