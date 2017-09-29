@@ -23,7 +23,9 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     private EditText editText_email;
     private EditText editText_senha;
     private TextView textView_signin;
-    FirebaseAuth firebaseAuth;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
     private ProgressDialog progressDialog;
 
     @Override
@@ -32,18 +34,23 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_registro);
 
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser() != null){
-            finish();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-        }
-        progressDialog = new ProgressDialog(this);
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
+                if (firebaseAuth.getCurrentUser() != null){
+
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                }
+
+            }
+        };
+        progressDialog = new ProgressDialog(this);
         editText_email = (EditText) findViewById(R.id.editText_email);
         editText_senha = (EditText) findViewById(R.id.editText_senha);
-
         textView_signin = (TextView) findViewById(R.id.textView_signin);
-
         buttonRegister.setOnClickListener(this);
         textView_signin.setOnClickListener(this);
 
@@ -66,14 +73,14 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         progressDialog.setMessage("Registrando Usuario...");
         progressDialog.show();
 
-        firebaseAuth.createUserWithEmailAndPassword(email,senha)
+        mAuth.createUserWithEmailAndPassword(email,senha)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
                         if (task.isSuccessful()){
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         }else{
                             Toast.makeText(RegistroActivity.this, "Não foi possivel realizar o cadastro, tente novamente.", Toast.LENGTH_SHORT).show();
                         }

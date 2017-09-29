@@ -8,7 +8,7 @@ public class UserInformation {
     String nome;
     String contato;
 
-   public UserInformation(){
+   public UserInformation(String nome, String contato, String endereco){
 
     }
 
