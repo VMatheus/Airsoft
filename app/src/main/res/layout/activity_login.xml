@@ -47,6 +47,7 @@
         android:id="@+id/textViewRecuperar"
         android:text="Esqueci minha senha"
         android:layout_gravity="right"
+        android:onClick="callReset"
         android:layout_marginRight="30dp"
         android:layout_marginTop="5dp"/>
 

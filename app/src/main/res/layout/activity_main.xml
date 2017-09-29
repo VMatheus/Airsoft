@@ -35,7 +35,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/buttonProfile"
             android:text="Perfil"
-            android:layout_gravity="right"/>
+            android:background="@drawable/input_botao_temporario"
+            android:layout_margin="10dp"/>
 
 
 

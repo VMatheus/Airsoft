@@ -32,8 +32,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
 
+
+        mAuth = FirebaseAuth.getInstance();
         buttonSignin = (Button) findViewById(R.id.buttonSignin);
         editText_email = (EditText) findViewById(R.id.editText_email);
         editText_senha = (EditText) findViewById(R.id.editText_senha);
@@ -70,6 +71,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void callReset(View view){
+        Intent intent = new Intent(this, ResetActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onStart() {

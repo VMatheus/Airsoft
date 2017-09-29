@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         String contato = editTextContato.getText().toString().trim();
         String endereco = editTextEndereco.getText().toString().trim();
 
-        UserInformation userInformation = new UserInformation(nome,contato,endereco);
+        UserInformation userInformation = new UserInformation(nome, contato, endereco);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference.child(user.getUid()).setValue(userInformation);
         Toast.makeText(this, "Informações salvas", Toast.LENGTH_SHORT).show();
