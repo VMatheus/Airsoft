@@ -32,7 +32,8 @@
         android:hint="Senha" />
 
     <Button
-        android:background="@color/colorPrimaria"
+        android:background="@drawable/input_background"
+        android:backgroundTint="@color/colorPrimaria"
         android:textColor="@color/colorSecundaria"
         android:layout_marginTop="40dp"
         android:id="@+id/buttonRegister"

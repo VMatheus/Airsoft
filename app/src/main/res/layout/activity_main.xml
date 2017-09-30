@@ -51,8 +51,7 @@
         app:menu="@menu/navigation"
         app:itemTextColor="@color/colorGray"
         app:itemIconTint="@color/colorGray"
-        app:itemBackground="@color/colorPrimaria"/>
-
+        app:itemBackground="@drawable/button_selector"/>
 
     </FrameLayout>
 
