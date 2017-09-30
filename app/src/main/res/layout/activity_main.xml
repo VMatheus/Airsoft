@@ -49,8 +49,9 @@
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation"
-        app:itemTextColor="@color/colorFundo"
-        app:itemIconTint="@color/colorFundo"/>
+        app:itemTextColor="@color/colorGray"
+        app:itemIconTint="@color/colorGray"
+        app:itemBackground="@color/colorPrimaria"/>
 
 
     </FrameLayout>

@@ -3,7 +3,16 @@
     <color name="colorTolbar">#1f3e58</color>
     <color name="colorPrimaryDark">#152b3d</color>
     <color name="colorAccent">#898a8f</color>
-    <color name="colorFundo">#0f1e2b</color>
     <color name="colorFundoLogin">#2d597e</color>
     <color name="colorBranca">#e6eaea</color>
+
+
+    <color name="colorFundo">#001926</color>
+    <color name="colorPrimaria">#0D3149</color>
+    <color name="colorSecundaria">#29B6f6</color>
+    <color name="colorGray">#8698A4</color>
+    <color name="colorRed">#FF3333</color>
+
 </resources>
+
+

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nof.airsoft.RegistroActivity"
-    android:background="@color/colorFundoLogin"
+    android:background="@color/colorFundo"
     android:weightSum="1">
 
     <ImageView
@@ -18,7 +18,7 @@
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <EditText
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:inputType="textEmailAddress"
@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewRecuperar"
         android:text="Esqueci minha senha"
+        android:textColor="@color/colorSecundaria"
         android:layout_gravity="right"
         android:onClick="callReset"
         android:layout_marginRight="30dp"
@@ -55,14 +56,18 @@
         android:id="@+id/buttonSignin"
         android:layout_gravity="center"
         android:text="Entrar"
-        android:layout_marginTop="10dp"
+        android:textColor="@color/colorSecundaria"
+        android:layout_marginTop="40dp"
         android:background="@drawable/input_background"
-        android:layout_width="266dp"
+        android:layout_width="290dp"
         android:layout_height="50dp"
+        android:backgroundTint="@color/colorPrimaria"
         android:layout_weight="0.01" />
 
     <TextView
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
+        android:textColor="@color/colorSecundaria"
         android:text="Ainda não possui registro? Clique aqui!"
         android:id="@+id/textView_register"
         android:layout_width="match_parent"
