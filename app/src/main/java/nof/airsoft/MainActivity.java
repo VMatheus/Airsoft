@@ -1,10 +1,14 @@
 package nof.airsoft;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,10 +16,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private Button buttonProfile;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -37,13 +40,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonProfile = (Button) findViewById(R.id.buttonProfile);
-        buttonProfile.setOnClickListener(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.customToolbar);
+        setSupportActionBar(toolbar);
 
         String[] Equipes = {};
         ListView listaEquipes = (ListView) findViewById(R.id.lista_equipes);
@@ -51,10 +55,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listaEquipes.setAdapter(adapter);
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == buttonProfile){
-            startActivity(new Intent(this, ProfileActivity.class));
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.tolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.profile: {
+                startActivity(new Intent(this, ProfileActivity.class));
+            }
         }
+        return false;
     }
 }

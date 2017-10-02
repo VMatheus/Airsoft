@@ -12,10 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="Airsoft" />
-        <activity android:name=".RegistroActivity">
-        </activity>
+            android:name=".MainActivity"  />
+        <activity android:name=".RegistroActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ResetActivity"></activity>
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ResetActivity" />
+        <activity android:name=".ProfileActivity" />
     </application>
 
 </manifest>

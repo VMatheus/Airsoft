@@ -11,7 +11,9 @@
     tools:context="nof.airsoft.MainActivity"
     android:weightSum="1">
 
-
+    <include layout="@layout/tolbar"
+        android:id="@+id/customToolbar" >
+    </include>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -29,14 +31,6 @@
             android:layout_height="match_parent"
             android:id="@+id/lista_equipes">
         </ListView>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonProfile"
-            android:text="Perfil"
-            android:background="@drawable/input_botao_temporario"
-            android:layout_margin="10dp"/>
 
 
 
