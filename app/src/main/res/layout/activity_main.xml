@@ -5,10 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorFundo"
-    android:orientation="vertical"
-    android:weightSum="1"
-    tools:context="nof.airsoft.MainActivity">
+    android:orientation="vertical">
 
     <include
         android:id="@+id/customToolbar"
@@ -16,10 +13,10 @@
 
     <FrameLayout
         android:id="@+id/content"
+        android:background="@color/colorFundo"
         android:layout_width="match_parent"
-        android:layout_height="460dp">
-
-    </FrameLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -34,6 +31,8 @@
         app:menu="@menu/navigation">
 
     </android.support.design.widget.BottomNavigationView>
+
+
 
 
 </LinearLayout>
