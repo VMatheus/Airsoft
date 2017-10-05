@@ -77,16 +77,6 @@ public class EquipesFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            Toast.makeText(context, "Equipes Fragment Attached", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
