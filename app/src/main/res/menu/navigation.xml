@@ -5,17 +5,17 @@
     <item
         android:id="@+id/navigation_equipes"
         android:icon="@drawable/equipes"
-        android:title="Equipes" />
+        android:title="@string/equipes" />
 
     <item
-        android:id="@+id/navigation_miequipe"
+        android:id="@+id/navigation_minha_equipe"
         android:icon="@drawable/minha_equipe"
-        android:title="Minha Equipe"/>
+        android:title="@string/minha_equipe"/>
 
     <item
-        android:id="@+id/navigation_estatisticas"
+        android:id="@+id/navigation_perfil"
         android:icon="@drawable/games"
-        android:title="Jogos marcados"/>
+        android:title="@string/jogos_marcados"/>
 
 
 

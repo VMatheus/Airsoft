@@ -20,39 +20,29 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_estatisticas:
-                    mTextMessage.setText("Equipes");
-                    return true;
-                case R.id.navigation_miequipe:
-                    mTextMessage.setText("Minha Equipe");
-                    return true;
-                case R.id.navigation_equipes:
-                    mTextMessage.setText("Estatisticas");
-            }
-            return false;
-        }
-
-    };
-
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() ==  R.id.navigation_equipes) {
+                } else if (item.getItemId() == R.id.navigation_minha_equipe) {
+                    startActivity(new Intent(getApplicationContext(), MinhaEquipeActivity.class));
+                } else if (item.getItemId() == R.id.navigation_perfil) {
+                }
+                return false;
+            }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.customToolbar);
         setSupportActionBar(toolbar);
-
-        String[] Equipes = {};
-        ListView listaEquipes = (ListView) findViewById(R.id.lista_equipes);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_gallery_item, Equipes);
-        listaEquipes.setAdapter(adapter);
     }
 
 

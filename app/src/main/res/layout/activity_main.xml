@@ -36,7 +36,7 @@
 
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/bottomNavigationView"
         android:backgroundTint="@color/colorTolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
