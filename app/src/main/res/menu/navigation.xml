@@ -13,7 +13,7 @@
         android:title="@string/minha_equipe"/>
 
     <item
-        android:id="@+id/navigation_perfil"
+        android:id="@+id/navigation_jogos_marcados"
         android:icon="@drawable/games"
         android:title="@string/jogos_marcados"/>
 
