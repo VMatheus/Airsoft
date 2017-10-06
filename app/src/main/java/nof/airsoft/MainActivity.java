@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.content, new EquipesFragment()).addToBackStack(null).commit();
                 return true;
             } else if (item.getItemId() == R.id.navigation_minha_equipe) {
-                transaction.replace(R.id.content, new MinhaEquipeFragment()).addToBackStack(null).commit();
+                startActivity(new Intent(getApplicationContext(), NoTeamActivity.class));
                 return true;
             } else if (item.getItemId() == R.id.navigation_jogos_marcados) {
                 transaction.replace(R.id.content, new JogosMarcadosFragment()).addToBackStack(null).commit();

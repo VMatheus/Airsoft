@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".RegistroActivity" />
         <activity android:name=".LoginActivity">
 
@@ -19,14 +25,8 @@
         <activity android:name=".ResetActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MinhaEquipeActivity" />
-        <activity android:name=".EquipeFormActivity" />
         <activity android:name=".RegistroEquipeActivity" />
         <activity android:name=".NoTeamActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

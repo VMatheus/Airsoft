@@ -29,6 +29,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
+    private EquipeInformation endereco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,19 +52,27 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         };
         progressDialog = new ProgressDialog(this);
         editText_nome = (EditText) findViewById(R.id.editText_nome);
+        registarEquipe.setOnClickListener(this);
 
     }
 
-    private void registerUser() {
+    private void registerTeam() {
         String nome = editText_nome.getText().toString().trim();
 
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
             return;
-        }
+        }else {
 
-        progressDialog.setMessage("Registrando Equipe...");
-        progressDialog.show();
+            progressDialog.setMessage("Registrando Equipe...");
+            progressDialog.show();
+
+            EquipeInformation equipeInformation = new EquipeInformation(nome);
+            equipeInformation.getNome(nome);
+            mDatabase.child("Equipe").push();
+            mDatabase.setValue(equipeInformation);
+
+        }
 
     }
 
@@ -75,7 +84,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         if(view == registarEquipe){
-            registerUser();
+            registerTeam();
 
         }
 
