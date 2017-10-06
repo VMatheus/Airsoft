@@ -1,9 +1,7 @@
 package nof.airsoft;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
@@ -12,15 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import nof.airsoft.Fragments.EquipesFragment;
-import nof.airsoft.Fragments.JogosMarcadosFragment;
-import nof.airsoft.Fragments.MinhaEquipeFragment;
+import layout.EquipesFragment;
+import layout.JogosMarcadosFragment;
+import layout.MinhaEquipeFragment;
 
 public class MainActivity extends AppCompatActivity {
 

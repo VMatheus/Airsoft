@@ -21,13 +21,6 @@
         <activity android:name=".MinhaEquipeActivity" />
         <activity android:name=".EquipeFormActivity" />
         <activity android:name=".RegistroEquipeActivity" />
-        <activity android:name=".NoTeamActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
