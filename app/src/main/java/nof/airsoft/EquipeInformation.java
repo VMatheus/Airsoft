@@ -15,4 +15,8 @@ public class EquipeInformation {
         this.contato = contato;
         this.endereco = endereco;
     }
+
+    public EquipeInformation(String nome){
+
+    }
 }
