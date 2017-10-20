@@ -6,13 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import model.Usuario;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -57,9 +58,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         String contato = editTextContato.getText().toString().trim();
         String endereco = editTextEndereco.getText().toString().trim();
 
-        UserInformation userInformation = new UserInformation(nome, contato, endereco);
+        Usuario usuario = new Usuario(nome, contato, endereco);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference.child(user.getUid()).setValue(userInformation);
+        databaseReference.child(user.getUid()).setValue(usuario);
         Toast.makeText(this, "Informações salvas", Toast.LENGTH_SHORT).show();
     }
 

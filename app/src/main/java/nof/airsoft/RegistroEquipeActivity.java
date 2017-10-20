@@ -9,16 +9,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
+import model.Equipe;
 
 public class RegistroEquipeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,7 +25,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
-    private EquipeInformation endereco;
+    private Equipe endereco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +63,10 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
             progressDialog.setMessage("Registrando Equipe...");
             progressDialog.show();
 
-            EquipeInformation equipeInformation = new EquipeInformation(nome);
-            equipeInformation.getNome(nome);
+            Equipe equipe = new Equipe(nome);
+            equipe.getNome(nome);
             mDatabase.child("Equipe").push();
-            mDatabase.setValue(equipeInformation);
+            mDatabase.setValue(equipe);
 
         }
 

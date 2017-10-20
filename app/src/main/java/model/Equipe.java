@@ -1,21 +1,21 @@
-package nof.airsoft;
+package model;
 
 /**
  * Created by Dalmiro Junior on 05/10/2017.
  */
 
-public class EquipeInformation {
+public class Equipe {
     String nome;
     String endereco;
     String contato;
 
-    public EquipeInformation(String nome, String endereco, String contato) {
+    public Equipe(String nome, String endereco, String contato) {
         this.nome = nome;
         this.endereco = endereco;
         this.contato = contato;
     }
 
-    public EquipeInformation(String nome) {
+    public Equipe(String nome) {
         this.nome = nome;
 
     }
@@ -28,7 +28,7 @@ public class EquipeInformation {
         this.nome = nome;
     }
 
-    public String getEndereco(EquipeInformation endereco) {
+    public String getEndereco(Equipe endereco) {
         return this.endereco;
     }
 
