@@ -3,7 +3,7 @@ package nof.airsoft;
 import com.google.firebase.database.DatabaseReference;
 
 /**
- * Created by Dalmiro Junior on 05/10/2017.
+ * Created by Dalmiro Junior on 05/10/2017. lixo
  */
 
 public class EquipeInformation extends RegistroEquipeActivity {
