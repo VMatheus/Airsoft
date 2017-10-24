@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Created by Dalmiro Junior on 05/10/2017.
+ * Created by Dalmiro Junior on 05/10/2017. lixo
  */
 
 public class Equipe {
