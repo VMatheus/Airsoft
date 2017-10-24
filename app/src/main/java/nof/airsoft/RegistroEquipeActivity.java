@@ -10,19 +10,16 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.UUID;
+
+import model.EquipeInformation;
+import model.Usuario;
 
 public class RegistroEquipeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,7 +30,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
-    private EquipeInformation endereco;
+    private Usuario endereco;
     FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 

@@ -1,6 +1,8 @@
-package nof.airsoft;
+package model;
 
 import com.google.firebase.database.DatabaseReference;
+
+import nof.airsoft.RegistroEquipeActivity;
 
 /**
  * Created by Dalmiro Junior on 05/10/2017. lixo

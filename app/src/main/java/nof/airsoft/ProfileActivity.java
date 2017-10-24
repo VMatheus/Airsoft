@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import model.Usuario;
+
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
@@ -57,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         String contato = editTextContato.getText().toString().trim();
         String endereco = editTextEndereco.getText().toString().trim();
 
-        UserInformation userInformation = new UserInformation(nome, contato, endereco);
+        Usuario userInformation = new Usuario(nome, contato, endereco);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference.child("usuarios").child(user.getUid()).setValue(userInformation);
         Toast.makeText(this, "Informações salvas", Toast.LENGTH_SHORT).show();
