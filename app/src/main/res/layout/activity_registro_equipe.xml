@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nof.airsoft.RegistroActivity"
+    tools:context="nof.airsoft.RegistroEquipeActivity"
     android:background="@color/colorFundo">
 
 
@@ -27,7 +27,7 @@
         android:background="@drawable/input_background"
         android:layout_width="match_parent"
         android:hint="Nome"
-        android:id="@+id/editText_nome" />
+        android:id="@+id/editText_nomeEquipe" />
 
     <Button
         android:background="@drawable/input_background"

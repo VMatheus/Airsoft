@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ import model.Usuario;
 public class RegistroEquipeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button registarEquipe;
-    private EditText editText_nome;
+    private EditText editText_nomeEquipe;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -55,8 +56,9 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
             }
         };
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         progressDialog = new ProgressDialog(this);
-        editText_nome = (EditText) findViewById(R.id.editText_nome);
+        editText_nomeEquipe = (EditText) findViewById(R.id.editText_nomeEquipe);
         registarEquipe.setOnClickListener(this);
 
     }
@@ -67,7 +69,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
     }
 
     private void registerTeam() {
-        String nome = editText_nome.getText().toString();
+        String nome = editText_nomeEquipe.getText().toString().trim();
 
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
@@ -75,10 +77,8 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
             String id = UUID.randomUUID().toString();
             EquipeInformation equipeInformation = new EquipeInformation(nome, id);
             equipeInformation.setId(id);
-            FirebaseUser user = firebaseAuth.getCurrentUser();
-            databaseReference.child("equipes").child(user.getUid()).setValue(equipeInformation);
-
-
+            databaseReference.child("equipes").push().setValue(equipeInformation);
+            startActivity(new Intent(this, MainActivity.class));
         }
 
 

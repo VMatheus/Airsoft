@@ -40,15 +40,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
         FirebaseUser user = firebaseAuth.getCurrentUser();
         buttonSalvar = (Button) findViewById(R.id.buttonSalvar);
         editTextNome = (EditText) findViewById(R.id.editTextNome);
         editTextEndereco = (EditText) findViewById(R.id.editTextEndereco);
         editTextContato = (EditText) findViewById(R.id.editTextContato);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
-
-
         buttonLogout.setOnClickListener(this);
         buttonSalvar.setOnClickListener(this);
 
