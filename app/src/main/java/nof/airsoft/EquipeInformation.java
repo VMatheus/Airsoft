@@ -1,24 +1,21 @@
 package nof.airsoft;
 
+import com.google.firebase.database.DatabaseReference;
+
 /**
  * Created by Dalmiro Junior on 05/10/2017.
  */
 
-public class EquipeInformation {
-    String nome;
-    String endereco;
-    String contato;
+public class EquipeInformation extends RegistroEquipeActivity {
+    private String nome;
+    private String id;
 
-    public EquipeInformation(String nome, String endereco, String contato) {
+    public EquipeInformation(String nome, String id) {
         this.nome = nome;
-        this.endereco = endereco;
-        this.contato = contato;
+        this.id = id;
     }
 
-    public EquipeInformation(String nome) {
-        this.nome = nome;
 
-    }
 
     public String getNome(String nome) {
         return this.nome;
@@ -28,19 +25,11 @@ public class EquipeInformation {
         this.nome = nome;
     }
 
-    public String getEndereco(EquipeInformation endereco) {
-        return this.endereco;
+    public String getId() {
+        return id;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getContato() {
-        return contato;
-    }
-
-    public void setContato(String contato) {
-        this.contato = contato;
+    public void setId(String id) {
+        this.id = id;
     }
 }

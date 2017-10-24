@@ -3,6 +3,7 @@ package nof.airsoft;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,9 +17,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
 
 public class RegistroEquipeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +34,10 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
     private EquipeInformation endereco;
+    FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,30 +64,28 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
     }
 
+    @Override
+    public void onCreateSupportNavigateUpTaskStack(@NonNull TaskStackBuilder builder) {
+        super.onCreateSupportNavigateUpTaskStack(builder);
+    }
+
     private void registerTeam() {
-        String nome = editText_nome.getText().toString().trim();
+        String nome = editText_nome.getText().toString();
 
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
-            return;
         }else {
+            String id = UUID.randomUUID().toString();
+            EquipeInformation equipeInformation = new EquipeInformation(nome, id);
+            equipeInformation.setId(id);
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            databaseReference.child("equipes").child(user.getUid()).setValue(equipeInformation);
 
-            progressDialog.setMessage("Registrando Equipe...");
-            progressDialog.show();
-
-            EquipeInformation equipeInformation = new EquipeInformation(nome);
-            equipeInformation.getNome(nome);
-            mDatabase.child("Equipe").push();
-            mDatabase.setValue(equipeInformation);
 
         }
 
+
     }
-
-
-
-
-
 
     @Override
     public void onClick(View view) {
