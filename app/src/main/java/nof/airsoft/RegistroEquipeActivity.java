@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Map;
 import java.util.UUID;
 
 import model.EquipeInformation;
@@ -74,10 +75,13 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
         }else {
-            String id = UUID.randomUUID().toString();
-            EquipeInformation equipeInformation = new EquipeInformation(nome, id);
-            equipeInformation.setId(id);
+            EquipeInformation equipeInformation = new EquipeInformation(nome);
             databaseReference.child("equipes").push().setValue(equipeInformation);
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            Usuario usuario = new Usuario();
+            usuario.setIdDaEquipe(equipeInformation.getId());
+
+            databaseReference.child("usuarios").child(user.getUid()).updateChildren(usuario.getMap());
             startActivity(new Intent(this, MainActivity.class));
         }
 

@@ -7,6 +7,7 @@ package model;
 public class Usuario{
     private String nome;
     private String contato;
+    private String idDaEquipe;
     private String endereco;
 
 
@@ -14,6 +15,10 @@ public class Usuario{
         this.nome = nome;
         this.contato = contato;
         this.endereco = endereco;
+
+    }
+
+    public Usuario() {
 
     }
 
@@ -39,5 +44,13 @@ public class Usuario{
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public String getIdDaEquipe() {
+        return idDaEquipe;
+    }
+
+    public void setIdDaEquipe(String idDaEquipe) {
+        this.idDaEquipe = idDaEquipe;
     }
 }
