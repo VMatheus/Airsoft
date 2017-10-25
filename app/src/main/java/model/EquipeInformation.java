@@ -13,7 +13,7 @@ import nof.airsoft.RegistroEquipeActivity;
 public class EquipeInformation {
     private String nome;
     private String id;
-    private String idDoLider;
+   // private String idDoLider;
 
     public EquipeInformation(String nome) {
         this.nome = nome;

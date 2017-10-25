@@ -48,7 +48,7 @@ public class Usuario{
 
     public String getIdDaEquipe() {
         return idDaEquipe;
-    }
+   }
 
     public void setIdDaEquipe(String idDaEquipe) {
         this.idDaEquipe = idDaEquipe;

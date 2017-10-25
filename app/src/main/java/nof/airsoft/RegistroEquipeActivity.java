@@ -77,11 +77,8 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         }else {
             EquipeInformation equipeInformation = new EquipeInformation(nome);
             databaseReference.child("equipes").push().setValue(equipeInformation);
-            FirebaseUser user = firebaseAuth.getCurrentUser();
             Usuario usuario = new Usuario();
             usuario.setIdDaEquipe(equipeInformation.getId());
-
-            databaseReference.child("usuarios").child(user.getUid()).updateChildren(usuario.getMap());
             startActivity(new Intent(this, MainActivity.class));
         }
 
