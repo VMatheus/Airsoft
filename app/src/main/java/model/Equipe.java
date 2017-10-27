@@ -1,26 +1,23 @@
 package model;
 
-import com.google.firebase.database.DatabaseReference;
-
 import java.util.UUID;
 
 import nof.airsoft.RegistroEquipeActivity;
 
 /**
- * Created by Dalmiro Junior on 05/10/2017. lixo
+ * Created by Dalmiro Junior on 05/10/2017.
  */
 
-public class EquipeInformation {
+public class Equipe {
     private String nome;
     private String id;
-   // private String idDoLider;
+    private String idDoLider;
 
-    public EquipeInformation(String nome) {
+    public Equipe(String nome) {
         this.nome = nome;
         this.id = UUID.randomUUID().toString();
+        this.idDoLider = Usuario.class.getName();
     }
-
-
 
     public String getNome(String nome) {
         return this.nome;
@@ -37,4 +34,6 @@ public class EquipeInformation {
     public void setId(String id) {
         this.id = id;
     }
+
+
 }

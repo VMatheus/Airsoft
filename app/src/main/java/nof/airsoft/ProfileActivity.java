@@ -1,6 +1,8 @@
 package nof.airsoft;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,20 +13,27 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.prefs.PreferenceChangeEvent;
 
 import model.Usuario;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
     private EditText editTextNome;
     private EditText editTextContato;
     private EditText editTextEndereco;
     private Button buttonLogout;
     private Button buttonSalvar;
     private DatabaseReference databaseReference;
+    private SharedPreferences sharedPreferencesUser;
 
 
     @Override
@@ -48,6 +57,32 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonLogout.setOnClickListener(this);
         buttonSalvar.setOnClickListener(this);
+
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("usuario");
+
+        SharedPreferencesUser preferencesUser = new SharedPreferencesUser(ProfileActivity.this);
+        preferencesUser.salvarUsuarioPreferences("id","nome");
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try {
+                    Usuario usuario = dataSnapshot.getValue(Usuario.class);
+                    editTextNome.setText(usuario.getNome());
+                    editTextEndereco.setText(usuario.getEndereco());
+                    editTextContato.setText(usuario.getContato());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
 
     }
 

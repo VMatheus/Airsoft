@@ -13,14 +13,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
-import model.EquipeInformation;
+import model.Equipe;
 import model.Usuario;
 
 public class RegistroEquipeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -75,13 +74,10 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
         }else {
-            EquipeInformation equipeInformation = new EquipeInformation(nome);
-            databaseReference.child("equipes").push().setValue(equipeInformation);
-            FirebaseUser user = firebaseAuth.getCurrentUser();
+            Equipe equipe = new Equipe(nome);
+            databaseReference.child("equipes").push().setValue(equipe);
             Usuario usuario = new Usuario();
-            usuario.setIdDaEquipe(equipeInformation.getId());
-
-            databaseReference.child("usuarios").child(user.getUid()).updateChildren(usuario.getMap());
+            usuario.setIdDaEquipe(equipe.getId());
             startActivity(new Intent(this, MainActivity.class));
         }
 
