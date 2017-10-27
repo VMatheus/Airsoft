@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import layout.EquipesFragment;
 import layout.JogosMarcadosFragment;
 import layout.MinhaEquipeFragment;
+import layout.SemEquipeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.content, new EquipesFragment()).addToBackStack(null).commit();
                 return true;
             } else if (item.getItemId() == R.id.navigation_minha_equipe) {
-                startActivity(new Intent(getApplicationContext(), NoTeamActivity.class));
+                transaction.replace(R.id.content, new SemEquipeFragment()).addToBackStack(null).commit();
+
                 return true;
             } else if (item.getItemId() == R.id.navigation_jogos_marcados) {
                 transaction.replace(R.id.content, new JogosMarcadosFragment()).addToBackStack(null).commit();

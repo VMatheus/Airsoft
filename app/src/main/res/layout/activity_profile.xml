@@ -8,9 +8,18 @@
     tools:context="nof.airsoft.ProfileActivity"
     android:background="@color/colorFundo">
 
-   <EditText
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/foto"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
        android:padding="10dp"
-       android:layout_marginTop="10dp"
+       android:layout_marginTop="80dp"
        android:layout_marginLeft="20dp"
        android:layout_marginRight="20dp"
        android:background="@drawable/input_background"
