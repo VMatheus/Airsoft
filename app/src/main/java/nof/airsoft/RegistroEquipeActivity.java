@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -44,18 +45,6 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
         registarEquipe = (Button) findViewById(R.id.registrarEquipe);
         mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                if (firebaseAuth.getCurrentUser() != null){
-
-                    startActivity(new Intent(getApplicationContext(), MinhaEquipeActivity.class));
-
-                }
-
-            }
-        };
         databaseReference = FirebaseDatabase.getInstance().getReference();
         progressDialog = new ProgressDialog(this);
         editText_nomeEquipe = (EditText) findViewById(R.id.editText_nomeEquipe);
@@ -74,10 +63,22 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
         }else {
-            Equipe equipe = new Equipe(nome);
-            databaseReference.child("equipes").push().setValue(equipe);
-            Usuario usuario = new Usuario();
-            usuario.setIdDaEquipe(equipe.getId());
+           // Equipe equipe = new Equipe(nome);
+            //final Usuario usuario = usuarioDao().getUsuario();
+            //usuario.setIdDaEquipe(usuario.getId());
+            //databaseReference.child("equipes").push().setValue(equipe);
+            //databaseReference.child("usuarios").child(usuario.getIdDaEquipe()).removeValue(new DatabaseReference.CompletionListener() {
+              //  @Override
+               // public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                 //   databaseReference.child("usuarios").push().setValue(usuario);
+                //}
+           // });
+
+            //Toast.makeText(getApplicationContext(), "Tamo ae " + equipe.getNome(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Informações Salvas!", Toast.LENGTH_SHORT).show();
+            //Usuario usuario = new Usuario();
+            //usuario.setIdDaEquipe(equipe.getId());
+
             startActivity(new Intent(this, MainActivity.class));
         }
 

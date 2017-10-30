@@ -11,10 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import layout.EquipesFragment;
-import layout.JogosMarcadosFragment;
-import layout.MinhaEquipeFragment;
-import layout.SemEquipeFragment;
+import fragments.EquipesFragment;
+import fragments.JogosMarcadosFragment;
+import fragments.SemEquipeFragment;
 
 public class MainActivity extends AppCompatActivity {
 

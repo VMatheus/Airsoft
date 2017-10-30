@@ -11,15 +11,13 @@ import nof.airsoft.RegistroEquipeActivity;
 public class Equipe {
     private String nome;
     private String id;
-    private String idDoLider;
 
     public Equipe(String nome) {
         this.nome = nome;
         this.id = UUID.randomUUID().toString();
-        this.idDoLider = Usuario.class.getName();
     }
 
-    public String getNome(String nome) {
+    public String getNome() {
         return this.nome;
     }
 
