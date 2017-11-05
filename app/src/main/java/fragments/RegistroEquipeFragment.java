@@ -93,7 +93,7 @@ public class RegistroEquipeFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         editText_nomeEquipe = (EditText) view.findViewById(R.id.editText_nomeEquipe);
-        registarEquipe.setOnClickListener((View.OnClickListener) this);
+        registarEquipe.setOnClickListener((View.OnClickListener) getActivity());
         return inflater.inflate(R.layout.fragment_registro_equipe, container, false);
 
 
@@ -144,16 +144,6 @@ public class RegistroEquipeFragment extends Fragment {
     }
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
 
     @Override
