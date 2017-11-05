@@ -62,34 +62,17 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
     private void registerTeam() {
         String nome = editText_nomeEquipe.getText().toString().trim();
-        String idLider = databaseReference.getKey();
 
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
         }else {
-
             String id = mDatabase.push().getKey();
+            String idLider = databaseReference.getKey();
+
             Equipe equipe = new Equipe(id, nome, idLider);
             databaseReference.child("equipes").child(nome).setValue(equipe);
 
-
-
-
-           // Equipe equipe = new Equipe(nome);
-            //final Usuario usuario = usuarioDao().getUsuario();
-            //usuario.setIdDaEquipe(usuario.getId());
-            //databaseReference.child("equipes").push().setValue(equipe);
-            //databaseReference.child("usuarios").child(usuario.getIdDaEquipe()).removeValue(new DatabaseReference.CompletionListener() {
-              //  @Override
-               // public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                 //   databaseReference.child("usuarios").push().setValue(usuario);
-                //}
-           // });
-
-            //Toast.makeText(getApplicationContext(), "Tamo ae " + equipe.getNome(), Toast.LENGTH_LONG).show();
             Toast.makeText(this, "Informações Salvas!", Toast.LENGTH_SHORT).show();
-            //Usuario usuario = new Usuario();
-            //usuario.setIdDaEquipe(equipe.getId());
 
             startActivity(new Intent(this, MainActivity.class));
         }
