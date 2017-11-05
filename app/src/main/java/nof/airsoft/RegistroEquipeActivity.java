@@ -69,9 +69,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         }else {
 
             String id = mDatabase.push().getKey();
-            idLider = mDatabase.getKey();
             Equipe equipe = new Equipe(id, nome, idLider);
-
             databaseReference.child("equipes").child(nome).setValue(equipe);
 
 

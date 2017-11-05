@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 
 public class Usuario{
-    private String usuarioId;
+    public String usuarioId;
     private String usuarioNome;
     private String usuarioContato;
     private String usuarioEndereco;
@@ -18,6 +18,10 @@ public class Usuario{
         this.usuarioNome = nome;
         this.usuarioContato = contato;
         this.usuarioEndereco = endereco;
+
+    }
+
+    public Usuario() {
 
     }
 
