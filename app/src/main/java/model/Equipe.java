@@ -9,29 +9,37 @@ import nof.airsoft.RegistroEquipeActivity;
  */
 
 public class Equipe {
-    private String nome;
-    private String id;
+    private String equipeId;
+    private String equipeNome;
+    private String equipeLiderId;
 
-    public Equipe(String nome) {
-        this.nome = nome;
-        this.id = UUID.randomUUID().toString();
+    public Equipe(String equipeId, String equipeNome, String equipeLiderId) {
+        this.equipeId = equipeId;
+        this.equipeNome = equipeNome;
+        this.equipeLiderId = equipeLiderId;
     }
 
-    public String getNome() {
-        return this.nome;
+    public String getEquipeId() {
+        return equipeId;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEquipeId(String equipeId) {
+        this.equipeId = equipeId;
     }
 
-    public String getId() {
-        return id;
+    public String getEquipeNome() {
+        return equipeNome;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEquipeNome(String equipeNome) {
+        this.equipeNome = equipeNome;
     }
 
+    public String getEquipeLiderId() {
+        return equipeLiderId;
+    }
 
+    public void setEquipeLiderId(String equipeLiderId) {
+        this.equipeLiderId = equipeLiderId;
+    }
 }

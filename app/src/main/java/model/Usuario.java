@@ -7,59 +7,51 @@ import java.util.UUID;
  */
 
 public class Usuario{
-    private String id;
-    private String nome;
-    private String contato;
-    private String idDaEquipe;
-    private String endereco;
+    private String usuarioId;
+    private String usuarioNome;
+    private String usuarioContato;
+    private String usuarioEndereco;
 
 
     public Usuario(String nome, String contato, String endereco) {
-        this.id = UUID.randomUUID().toString();
-        this.nome = nome;
-        this.contato = contato;
-        this.endereco = endereco;
+        this.usuarioId = UUID.randomUUID().toString();
+        this.usuarioNome = nome;
+        this.usuarioContato = contato;
+        this.usuarioEndereco = endereco;
 
     }
 
-    public Usuario() {
 
-    }
-    public String getId() {
-        return id;
-    };
-
-    public String getNome() {
-        return nome;
+    public String getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setUsuarioId(String usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
-    public String getContato() {
-        return contato;
+    public String getUsuarioNome() {
+        return usuarioNome;
     }
 
-    public void setContato(String contato) {
-        this.contato = contato;
+    public void setUsuarioNome(String usuarioNome) {
+        this.usuarioNome = usuarioNome;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getUsuarioContato() {
+        return usuarioContato;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setUsuarioContato(String usuarioContato) {
+        this.usuarioContato = usuarioContato;
     }
 
-    public String getIdDaEquipe() {
-        return idDaEquipe;
-   }
-
-    public void setIdDaEquipe(String idDaEquipe) {
-        this.idDaEquipe = idDaEquipe;
+    public String getUsuarioEndereco() {
+        return usuarioEndereco;
     }
 
+    public void setUsuarioEndereco(String usuarioEndereco) {
+        this.usuarioEndereco = usuarioEndereco;
+    }
 }
 

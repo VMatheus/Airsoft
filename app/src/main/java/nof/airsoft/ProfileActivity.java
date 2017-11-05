@@ -70,9 +70,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try {
                     Usuario usuario = dataSnapshot.getValue(Usuario.class);
-                    editTextNome.setText(usuario.getNome());
-                    editTextEndereco.setText(usuario.getEndereco());
-                    editTextContato.setText(usuario.getContato());
+                    editTextNome.setText(usuario.getUsuarioNome());
+                    editTextEndereco.setText(usuario.getUsuarioEndereco());
+                    editTextContato.setText(usuario.getUsuarioContato());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

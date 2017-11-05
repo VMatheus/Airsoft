@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -43,6 +44,8 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_equipe);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference("usuario");
+
         registarEquipe = (Button) findViewById(R.id.registrarEquipe);
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -59,10 +62,21 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
     private void registerTeam() {
         String nome = editText_nomeEquipe.getText().toString().trim();
+        String idLider = databaseReference.getKey();
 
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
         }else {
+
+            String id = mDatabase.push().getKey();
+
+            Equipe equipe = new Equipe(id, nome, idLider);
+
+            databaseReference.child("equipes").child(nome).setValue(equipe);
+
+
+
+
            // Equipe equipe = new Equipe(nome);
             //final Usuario usuario = usuarioDao().getUsuario();
             //usuario.setIdDaEquipe(usuario.getId());
