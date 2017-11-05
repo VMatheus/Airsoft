@@ -1,13 +1,27 @@
 package fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.TaskStackBuilder;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import model.Usuario;
+import nof.airsoft.MainActivity;
 import nof.airsoft.R;
 
 /**
@@ -23,6 +37,14 @@ public class RegistroEquipeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private Button registarEquipe;
+    private EditText editText_nomeEquipe;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+    private DatabaseReference mDatabase;
+    FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -58,6 +80,7 @@ public class RegistroEquipeFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -65,7 +88,15 @@ public class RegistroEquipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_registro_equipe, container, false);
+        registarEquipe = (Button) view.findViewById(R.id.registrarEquipe);
+        mAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        editText_nomeEquipe = (EditText) view.findViewById(R.id.editText_nomeEquipe);
+        registarEquipe.setOnClickListener((View.OnClickListener) this);
         return inflater.inflate(R.layout.fragment_registro_equipe, container, false);
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -74,6 +105,44 @@ public class RegistroEquipeFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
+
+    public void onClick(View view) {
+        if(view == registarEquipe){
+            registerTeam();
+
+        }
+
+    }
+
+    private void registerTeam() {
+        String nome = editText_nomeEquipe.getText().toString().trim();
+
+        if (TextUtils.isEmpty(nome)) {
+            Toast.makeText(getActivity(),"Escreva o nome por favor!",Toast.LENGTH_SHORT).show();
+        } else {
+            // Equipe equipe = new Equipe(nome);
+            //final Usuario usuario = usuarioDao().getUsuario();
+            //usuario.setIdDaEquipe(usuario.getId());
+            //databaseReference.child("equipes").push().setValue(equipe);
+            //databaseReference.child("usuarios").child(usuario.getIdDaEquipe()).removeValue(new DatabaseReference.CompletionListener() {
+            //  @Override
+            // public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+            //   databaseReference.child("usuarios").push().setValue(usuario);
+            //}
+            // });
+
+            //Toast.makeText(getApplicationContext(), "Tamo ae " + equipe.getNome(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),"Informações Salvas!",Toast.LENGTH_SHORT).show();
+            //Usuario usuario = new Usuario();
+            //usuario.setIdDaEquipe(equipe.getId());
+
+            startActivity(new Intent(getActivity(), MainActivity.class));
+        }
+
+
+    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -85,6 +154,7 @@ public class RegistroEquipeFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
 
     @Override
     public void onDetach() {
@@ -102,6 +172,8 @@ public class RegistroEquipeFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
