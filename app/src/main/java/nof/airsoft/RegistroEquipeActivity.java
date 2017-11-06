@@ -30,7 +30,6 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
     private EditText editText_nomeEquipe;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
     private Usuario endereco;
@@ -44,7 +43,6 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_equipe);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("usuario");
 
         registarEquipe = (Button) findViewById(R.id.registrarEquipe);
         mAuth = FirebaseAuth.getInstance();
@@ -61,8 +59,9 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
     }
 
     private void registerTeam() {
+        mDatabase = FirebaseDatabase.getInstance().getReference("usuario");
         String nome = editText_nomeEquipe.getText().toString().trim();
-        String idLider = databaseReference.getKey();
+        String idLider = databaseReference.push().getKey();
 
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();

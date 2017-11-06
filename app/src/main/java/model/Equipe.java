@@ -8,10 +8,10 @@ import nof.airsoft.RegistroEquipeActivity;
  * Created by Dalmiro Junior on 05/10/2017.
  */
 
-public class Equipe extends Usuario{
+public class Equipe{
     private String equipeId;
     private String equipeNome;
-    private String equipeLiderId = getUsuarioId();
+    private String equipeLiderId;
 
     public Equipe(String equipeId, String equipeNome, String equipeLiderId) {
         super();

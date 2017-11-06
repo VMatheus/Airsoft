@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 
 public class Usuario{
-    public String usuarioId;
+    public static String usuarioId;
     private String usuarioNome;
     private String usuarioContato;
     private String usuarioEndereco;
@@ -25,8 +25,7 @@ public class Usuario{
 
     }
 
-
-    public String getUsuarioId() {
+    public static String getUsuarioId() {
         return usuarioId;
     }
 
