@@ -7,6 +7,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +37,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
     private Usuario endereco;
     FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-
+    private Object usuario;
 
 
     @Override
@@ -70,6 +72,8 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
             String id = mDatabase.push().getKey();
             Equipe equipe = new Equipe(id, nome, idLider);
             databaseReference.child("equipes").child(nome).setValue(equipe);
+            equipe.adicionaJogador((Usuario) usuario);
+
 
             Toast.makeText(this, "Informações Salvas!", Toast.LENGTH_SHORT).show();
 

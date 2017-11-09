@@ -1,6 +1,9 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.UUID;
+
+import static model.Equipe.jogadores;
 
 /**
  * Created by Dalmiro Junior on 28/09/2017.
@@ -8,7 +11,7 @@ import java.util.UUID;
 
 public class Usuario{
     public static String usuarioId;
-    private String usuarioNome;
+    public static String usuarioNome;
     private String usuarioContato;
     private String usuarioEndereco;
 
@@ -25,6 +28,7 @@ public class Usuario{
 
     }
 
+
     public static String getUsuarioId() {
         return usuarioId;
     }
@@ -33,7 +37,7 @@ public class Usuario{
         this.usuarioId = usuarioId;
     }
 
-    public String getUsuarioNome() {
+    public  String getUsuarioNome() {
         return usuarioNome;
     }
 
@@ -56,5 +60,17 @@ public class Usuario{
     public void setUsuarioEndereco(String usuarioEndereco) {
         this.usuarioEndereco = usuarioEndereco;
     }
+
+    public static boolean verificaJogador(Usuario u){
+        for(int i=0; i < jogadores.size(); i++){
+            if (jogadores.get(i).getUsuarioNome().equals(u.getUsuarioNome())){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
 }
 

@@ -15,7 +15,9 @@ import android.view.MenuItem;
 
 import fragments.EquipesFragment;
 import fragments.JogosMarcadosFragment;
+import fragments.MinhaEquipeFragment;
 import fragments.SemEquipeFragment;
+import model.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.content, new EquipesFragment()).addToBackStack(null).commit();
                 return true;
             } else if (item.getItemId() == R.id.navigation_minha_equipe) {
-                transaction.replace(R.id.content, new SemEquipeFragment()).addToBackStack(null).commit();
-
+                Usuario.verificaJogador();
+                if (Usuario.verificaJogador() == true){
+                    transaction.replace(R.id.content,new MinhaEquipeFragment()).addToBackStack(null).commit();
+                }else {
+                    transaction.replace(R.id.content, new SemEquipeFragment()).addToBackStack(null).commit();
+                }
                 return true;
             } else if (item.getItemId() == R.id.navigation_jogos_marcados) {
                 transaction.replace(R.id.content, new JogosMarcadosFragment()).addToBackStack(null).commit();

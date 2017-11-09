@@ -1,5 +1,6 @@
 package nof.airsoft;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -22,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.prefs.PreferenceChangeEvent;
 
 import model.Usuario;
+
+import static model.Usuario.usuarioNome;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -86,6 +89,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    public void saveNomeJogadorSharedPreferences(String usuarioNome) {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("nome", usuarioNome);
+        editor.apply();
+    }
+
     private void saveUserInformation(){
         String nome = editTextNome.getText().toString().trim();
         String contato = editTextContato.getText().toString().trim();
@@ -94,6 +104,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Usuario userInformation = new Usuario(nome, contato, endereco);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference.child("usuarios").child(user.getUid()).setValue(userInformation);
+        saveNomeJogadorSharedPreferences(Usuario.usuarioNome);
         Toast.makeText(this, "Informações salvas", Toast.LENGTH_SHORT).show();
     }
 
