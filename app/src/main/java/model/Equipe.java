@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import nof.airsoft.RegistroEquipeActivity;
@@ -12,6 +13,7 @@ public class Equipe{
     private String equipeId;
     private String equipeNome;
     private String equipeLiderId;
+    private ArrayList<Usuario> jogadores;
 
     public Equipe(String equipeId, String equipeNome, String equipeLiderId) {
         super();
@@ -42,5 +44,13 @@ public class Equipe{
 
     public void setEquipeLiderId(String equipeLiderId) {
         this.equipeLiderId = equipeLiderId;
+    }
+
+    public void adicionaJogador(Usuario usuario){
+        this.jogadores.add(usuario);
+    }
+
+    public void removerJogador(Usuario usuario){
+        this.jogadores.remove(usuario);
     }
 }

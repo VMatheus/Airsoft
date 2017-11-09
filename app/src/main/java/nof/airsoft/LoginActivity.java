@@ -1,6 +1,8 @@
 package nof.airsoft;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -83,8 +85,16 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void saveLoginSharedPreferences(String email) {
+        SharedPreferences sharedPref =  getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("email", email);
+        editor.apply();
+
+    }
+
     public void iniciaLogin() {
-        String email = editText_email.getText().toString().trim();
+        final String email = editText_email.getText().toString().trim();
         String senha = editText_senha.getText().toString().trim();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(senha)) {
@@ -97,6 +107,10 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                saveLoginSharedPreferences(email);
+                              //  task.getResult().getUser().getUid(); Ou salva no sqlite ou salva no sharedPreferences
+                                //id = shared.editor.getString("idDoUsuario"0)
+
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             } else {
                                 Toast.makeText(LoginActivity.this, "Usuário e/ou senha incorreta", Toast.LENGTH_LONG).show();
@@ -105,5 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
         }
     }
+
+
 
 }
