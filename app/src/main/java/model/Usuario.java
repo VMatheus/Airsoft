@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static model.Equipe.jogadores;
 
@@ -9,7 +10,7 @@ import static model.Equipe.jogadores;
  * Created by Dalmiro Junior on 28/09/2017.
  */
 
-public class Usuario{
+public class Usuario extends ArrayList<Usuario> {
     public static String usuarioId;
     public static String usuarioNome;
     private String usuarioContato;
@@ -37,7 +38,7 @@ public class Usuario{
         this.usuarioId = usuarioId;
     }
 
-    public  String getUsuarioNome() {
+    public String getUsuarioNome() {
         return usuarioNome;
     }
 
@@ -61,16 +62,21 @@ public class Usuario{
         this.usuarioEndereco = usuarioEndereco;
     }
 
-    public static boolean verificaJogador(Usuario u){
-        for(int i=0; i < jogadores.size(); i++){
-            if (jogadores.get(i).getUsuarioNome().equals(u.getUsuarioNome())){
-            return true;
-        }else{
-            return false;
+    public static boolean verificaJogador(Usuario u) {
+        for (int i = 0; i < jogadores.size(); i++) {
+            if (jogadores.get(i).getUsuarioNome().equals(u.getUsuarioNome())) {
+                return true;
+            } else {
+                return false;
+            }
         }
+
+
+        return false;
     }
 
-
-
+    @Override
+    public Stream<Usuario> stream() {
+        return null;
+    }
 }
-
