@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-
         mAuth = FirebaseAuth.getInstance();
         buttonSignin = (Button) findViewById(R.id.buttonSignin);
         editText_email = (EditText) findViewById(R.id.editText_email);
@@ -94,14 +93,17 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPref =  getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("idUsuario", Usuario.getUsuarioId());
+        Toast.makeText(this, "shard: " + sharedPref, Toast.LENGTH_SHORT).show();
+
         editor.apply();
     }
 
-//    private void lerSharedPreferences(){
-//        SharedPreferences sharedPreferences = getSharedPreferences("idUsuario", Context.MODE_PRIVATE);
-//        String result = sharedPreferences.getString("idUsuario", "");
-//        resultText.setText("Resultado --> " + result);
-//    }
+    private void lerSharedPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("idUsuario", Context.MODE_PRIVATE);
+        String result = sharedPreferences.getString("idUsuario", "");
+        Toast.makeText(this, "id usuario: " + result, Toast.LENGTH_SHORT).show();
+
+    }
 
     public void iniciaLogin() {
         final String email = editText_email.getText().toString().trim();
@@ -120,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                                 saveLoginSharedPreferences();
                               //  task.getResult().getUser().getUid(); Ou salva no sqlite ou salva no sharedPreferences
                                 //id = shared.editor.getString("idDoUsuario"0)
+                                lerSharedPreferences();
 
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             } else {

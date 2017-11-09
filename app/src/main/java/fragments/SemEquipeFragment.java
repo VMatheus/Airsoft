@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import model.Usuario;
 import nof.airsoft.R;
 import nof.airsoft.RegistroEquipeActivity;
 
 import static model.Equipe.jogadores;
+import static model.Usuario.verificaJogador;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +39,7 @@ public class SemEquipeFragment extends Fragment {
 
 
     private OnFragmentInteractionListener mListener;
+    private Object usuario;
 
     public SemEquipeFragment() {
         // Required empty public constructor
@@ -79,6 +82,7 @@ public class SemEquipeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(getActivity(), RegistroEquipeActivity.class));
 
                 }
