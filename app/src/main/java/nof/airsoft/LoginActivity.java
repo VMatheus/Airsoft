@@ -18,6 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.CollationElementIterator;
+
+import model.Usuario;
+
 public class LoginActivity extends AppCompatActivity {
 
     private Button buttonSignin;
@@ -27,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private CollationElementIterator resultText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +90,18 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void saveLoginSharedPreferences(String email) {
+    private void saveLoginSharedPreferences() {
         SharedPreferences sharedPref =  getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("email", email);
+        editor.putString("idUsuario", Usuario.getUsuarioId());
         editor.apply();
-
     }
+
+//    private void lerSharedPreferences(){
+//        SharedPreferences sharedPreferences = getSharedPreferences("idUsuario", Context.MODE_PRIVATE);
+//        String result = sharedPreferences.getString("idUsuario", "");
+//        resultText.setText("Resultado --> " + result);
+//    }
 
     public void iniciaLogin() {
         final String email = editText_email.getText().toString().trim();
@@ -107,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                saveLoginSharedPreferences(email);
+                                saveLoginSharedPreferences();
                               //  task.getResult().getUser().getUid(); Ou salva no sqlite ou salva no sharedPreferences
                                 //id = shared.editor.getString("idDoUsuario"0)
 

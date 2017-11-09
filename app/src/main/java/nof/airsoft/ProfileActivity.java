@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.prefs.PreferenceChangeEvent;
 
+import model.Equipe;
 import model.Usuario;
 
 import static model.Usuario.usuarioNome;
@@ -37,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonSalvar;
     private DatabaseReference databaseReference;
     private SharedPreferences sharedPreferencesUser;
+    private Object usuario;
 
 
     @Override
@@ -104,8 +106,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Usuario userInformation = new Usuario(nome, contato, endereco);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference.child("usuarios").child(user.getUid()).setValue(userInformation);
-        saveNomeJogadorSharedPreferences(Usuario.usuarioNome);
         Toast.makeText(this, "Informações salvas", Toast.LENGTH_SHORT).show();
+        saveNomeJogadorSharedPreferences(Usuario.usuarioNome);
+
     }
 
     public void onClick(View view){

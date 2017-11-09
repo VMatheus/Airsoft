@@ -24,6 +24,7 @@ import static model.Equipe.jogadores;
 public class MainActivity extends AppCompatActivity {
 
 
+    private Object usuario;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -35,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.content, new EquipesFragment()).addToBackStack(null).commit();
                 return true;
             } else if (item.getItemId() == R.id.navigation_minha_equipe) {
-                Usuario.verificaJogador();
-                if (Usuario.verificaJogador() == true){
+                Usuario.verificaJogador((Usuario) usuario);
+                if (Usuario.verificaJogador((Usuario) usuario) == true){
                     transaction.replace(R.id.content,new MinhaEquipeFragment()).addToBackStack(null).commit();
                 }else {
                     transaction.replace(R.id.content, new SemEquipeFragment()).addToBackStack(null).commit();

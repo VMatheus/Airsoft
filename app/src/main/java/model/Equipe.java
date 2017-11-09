@@ -13,7 +13,7 @@ public class Equipe{
     private String equipeId;
     private String equipeNome;
     private String equipeLiderId;
-    public static ArrayList<Usuario> jogadores;
+    public static ArrayList<Usuario> jogadores = new ArrayList<>();
 
     public Equipe(String equipeId, String equipeNome, String equipeLiderId) {
         super();
@@ -53,6 +53,5 @@ public class Equipe{
     public void removerJogador(Usuario usuario){
         this.jogadores.remove(usuario);
     }
-
 
 }

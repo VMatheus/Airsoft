@@ -73,10 +73,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
             Equipe equipe = new Equipe(id, nome, idLider);
             databaseReference.child("equipes").child(nome).setValue(equipe);
             equipe.adicionaJogador((Usuario) usuario);
-
-
             Toast.makeText(this, "Informações Salvas!", Toast.LENGTH_SHORT).show();
-
             startActivity(new Intent(this, MainActivity.class));
         }
 

@@ -1,5 +1,9 @@
 package model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -34,11 +38,12 @@ public class Usuario extends ArrayList<Usuario> {
         return usuarioId;
     }
 
+
     public void setUsuarioId(String usuarioId) {
         this.usuarioId = usuarioId;
     }
 
-    public String getUsuarioNome() {
+    public static String getUsuarioNome() {
         return usuarioNome;
     }
 
@@ -62,17 +67,12 @@ public class Usuario extends ArrayList<Usuario> {
         this.usuarioEndereco = usuarioEndereco;
     }
 
-    public static boolean verificaJogador(Usuario u) {
-        for (int i = 0; i < jogadores.size(); i++) {
-            if (jogadores.get(i).getUsuarioNome().equals(u.getUsuarioNome())) {
+    public static boolean verificaJogador(Usuario usuario) {
+        if (jogadores.contains(usuario)) {
                 return true;
             } else {
                 return false;
             }
-        }
-
-
-        return false;
     }
 
     @Override
