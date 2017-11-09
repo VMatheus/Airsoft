@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else if (item.getItemId() == R.id.navigation_minha_equipe) {
                 Usuario.verificaJogador();
-                if (Usuario.verificaJogador(){
+                if (Usuario.verificaJogador() == true){
                     transaction.replace(R.id.content,new MinhaEquipeFragment()).addToBackStack(null).commit();
                 }else {
                     transaction.replace(R.id.content, new SemEquipeFragment()).addToBackStack(null).commit();
