@@ -54,4 +54,9 @@ public class Equipe{
         this.jogadores.remove(usuario);
     }
 
+    public static boolean verificaJogador(Usuario usuario) {
+        return jogadores.contains(usuario);
+    }
+
+
 }

@@ -15,7 +15,6 @@ import nof.airsoft.R;
 import nof.airsoft.RegistroEquipeActivity;
 
 import static model.Equipe.jogadores;
-import static model.Usuario.verificaJogador;
 
 /**
  * A simple {@link Fragment} subclass.

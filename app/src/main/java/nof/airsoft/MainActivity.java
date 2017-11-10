@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.content, new EquipesFragment()).addToBackStack(null).commit();
                 return true;
             } else if (item.getItemId() == R.id.navigation_minha_equipe) {
-                Usuario.verificaJogador((Usuario) usuario);
-                if (Usuario.verificaJogador((Usuario) usuario) == true){
+                SharedPreferencesUser sharedPreferencesUser = new SharedPreferencesUser(getApplicationContext());
+                if(sharedPreferencesUser.possuiEquipe()){
                     transaction.replace(R.id.content,new MinhaEquipeFragment()).addToBackStack(null).commit();
-                }else {
+                }else{
                     transaction.replace(R.id.content, new SemEquipeFragment()).addToBackStack(null).commit();
                 }
                 return true;

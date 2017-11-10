@@ -34,11 +34,14 @@ public class SharedPreferencesUser {
 
     //RECUPERANDO
     public String getIdentificador() {
-        return preferencias.getString(CHAVE_IDENTIFICADOR, null);
+        return preferencias.getString(CHAVE_IDENTIFICADOR, "");
     }
 
     public String getUsuarioNome() {
-        return preferencias.getString(CHAVE_NOME, null);
+        return preferencias.getString(CHAVE_NOME, "");
     }
 
+    public static boolean possuiEquipe() {
+        return false;
+    }
 }

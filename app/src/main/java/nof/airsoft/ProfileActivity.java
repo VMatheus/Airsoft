@@ -14,23 +14,16 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.prefs.PreferenceChangeEvent;
 
-import model.Equipe;
 import model.Usuario;
 
-import static model.Usuario.usuarioNome;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
     private EditText editTextNome;
     private EditText editTextContato;
     private EditText editTextEndereco;
@@ -38,7 +31,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonSalvar;
     private DatabaseReference databaseReference;
     private SharedPreferences sharedPreferencesUser;
-    private Object usuario;
 
 
     @Override
@@ -53,8 +45,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         }
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("usuarios");
         buttonSalvar = (Button) findViewById(R.id.buttonSalvar);
         editTextNome = (EditText) findViewById(R.id.editTextNome);
         editTextEndereco = (EditText) findViewById(R.id.editTextEndereco);
@@ -64,39 +55,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonSalvar.setOnClickListener(this);
 
 
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("usuario");
 
         SharedPreferencesUser preferencesUser = new SharedPreferencesUser(ProfileActivity.this);
         preferencesUser.salvarUsuarioPreferences("id","nome");
 
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                try {
-                    Usuario usuario = dataSnapshot.getValue(Usuario.class);
-                    editTextNome.setText(usuario.getUsuarioNome());
-                    editTextEndereco.setText(usuario.getUsuarioEndereco());
-                    editTextContato.setText(usuario.getUsuarioContato());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("Falhou: " + databaseError.getCode());
-            }
-        });
-
-
     }
 
-    public void saveNomeJogadorSharedPreferences(String usuarioNome) {
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("nome", usuarioNome);
-        editor.apply();
-    }
 
     private void saveUserInformation(){
         String nome = editTextNome.getText().toString().trim();
@@ -105,11 +69,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         Usuario userInformation = new Usuario(nome, contato, endereco);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference.child("usuarios").child(user.getUid()).setValue(userInformation);
-        Toast.makeText(this, "Informações salvas", Toast.LENGTH_SHORT).show();
-        saveNomeJogadorSharedPreferences(Usuario.usuarioNome);
-
-    }
+        databaseReference.child(user.getUid()).setValue(userInformation);
+        SharedPreferencesUser sharedPreferencesUser = new SharedPreferencesUser(this);
+        sharedPreferencesUser.salvarUsuarioPreferences(user.getUid(), nome);
+        Toast.makeText(this, "Informações salvas " + nome , Toast.LENGTH_SHORT).show();
+}
 
     public void onClick(View view){
         if (view == buttonLogout) {
