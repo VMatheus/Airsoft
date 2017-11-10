@@ -18,6 +18,8 @@ public class SharedPreferencesUser {
 
     private final String CHAVE_IDENTIFICADOR = "id";
     private final String CHAVE_NOME = "nome";
+    private final String CHAVE_CONTATO = "contato";
+    private final String CHAVE_ENDERECO = "endereco";
 
     public SharedPreferencesUser(Context contextoParametro) {
         contexto = contextoParametro;
@@ -26,9 +28,11 @@ public class SharedPreferencesUser {
     }
 
     //SALVANDO E RECUPERANDO USUARIOS
-    public void salvarUsuarioPreferences(String ident, String nome) {
+    public void salvarUsuarioPreferences(String ident, String nome, String contato, String endereco) {
         editor.putString(CHAVE_IDENTIFICADOR, ident);
         editor.putString(CHAVE_NOME, nome);
+        editor.putString(CHAVE_CONTATO, contato);
+        editor.putString(CHAVE_ENDERECO, endereco);
         editor.commit();
     }
 
