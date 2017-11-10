@@ -88,23 +88,6 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
 
     }
-
-//    private void saveLoginSharedPreferences() {
-//        SharedPreferences sharedPref =  getPreferences(Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//        editor.putString("idUsuario", Usuario.getUsuarioNome());
-//        Toast.makeText(this, "shard: " + sharedPref, Toast.LENGTH_SHORT).show();
-//
-//        editor.apply();
-//    }
-
-//    private void lerSharedPreferences(){
-//        SharedPreferences sharedPreferences = getSharedPreferences("idUsuario", Context.MODE_PRIVATE);
-//        String result = sharedPreferences.getString("idUsuario", "");
-//        Toast.makeText(this, "id usuario: " + result, Toast.LENGTH_SHORT).show();
-//
-//    }
-
     public void iniciaLogin() {
         final String email = editText_email.getText().toString().trim();
         String senha = editText_senha.getText().toString().trim();
@@ -119,10 +102,6 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                //  task.getResult().getUser().getUid(); Ou salva no sqlite ou salva no sharedPreferences
-                                //id = shared.editor.getString("idDoUsuario"0)
-                              //  lerSharedPreferences();
-
 
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             } else {

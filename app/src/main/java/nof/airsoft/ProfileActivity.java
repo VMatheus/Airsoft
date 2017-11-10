@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
         SharedPreferencesUser preferencesUser = new SharedPreferencesUser(ProfileActivity.this);
-        preferencesUser.salvarUsuarioPreferences("id","nome");
+        preferencesUser.salvarUsuarioPreferences("id","nome", "contato", "endereco");
 
     }
 
@@ -71,7 +71,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference.child(user.getUid()).setValue(userInformation);
         SharedPreferencesUser sharedPreferencesUser = new SharedPreferencesUser(this);
-        sharedPreferencesUser.salvarUsuarioPreferences(user.getUid(), nome);
+        sharedPreferencesUser.salvarUsuarioPreferences(user.getUid(), nome, contato, endereco);
         Toast.makeText(this, "Informações salvas " + nome , Toast.LENGTH_SHORT).show();
 }
 

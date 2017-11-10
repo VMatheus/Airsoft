@@ -2,6 +2,16 @@ package nof.airsoft;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
+
+import com.google.firebase.auth.FirebaseUser;
+
+import java.io.StringReader;
+import java.util.Map;
+import java.util.Set;
+
+import model.Usuario;
 
 /**
  * Created by rickc on 27/10/2017.
@@ -18,6 +28,7 @@ public class SharedPreferencesUser {
 
     private final String CHAVE_IDENTIFICADOR = "id";
     private final String CHAVE_NOME = "nome";
+    private final String CHAVE_NOMEJOG = "nomeJog";
     private final String CHAVE_CONTATO = "contato";
     private final String CHAVE_ENDERECO = "endereco";
 
@@ -27,25 +38,40 @@ public class SharedPreferencesUser {
         editor = preferencias.edit();
     }
 
-    //SALVANDO E RECUPERANDO USUARIOS
+    //SALVANDO USUARIOS
     public void salvarUsuarioPreferences(String ident, String nome, String contato, String endereco) {
         editor.putString(CHAVE_IDENTIFICADOR, ident);
         editor.putString(CHAVE_NOME, nome);
         editor.putString(CHAVE_CONTATO, contato);
         editor.putString(CHAVE_ENDERECO, endereco);
-        editor.commit();
+        editor.apply();
+    }
+
+    public void salvarUsuarioEquipe(String ident, String nomeJog){
+        editor.putString(CHAVE_IDENTIFICADOR, ident);
+        editor.putString(CHAVE_NOMEJOG, nomeJog);
+        editor.apply();
     }
 
     //RECUPERANDO
     public String getIdentificador() {
         return preferencias.getString(CHAVE_IDENTIFICADOR, "");
     }
-
     public String getUsuarioNome() {
         return preferencias.getString(CHAVE_NOME, "");
     }
+    public String getUsuarioNomeJog() {
+        return preferencias.getString(CHAVE_NOMEJOG, "");
+    }
+    public String getUsuarioContato() {
+        return preferencias.getString(CHAVE_CONTATO, "");
+    }
+    public String getUsuarioEndereco() {
+        return preferencias.getString(CHAVE_ENDERECO, "");
+    }
 
-    public static boolean possuiEquipe() {
+    public boolean possuiEquipe() {
+
         return false;
     }
 }

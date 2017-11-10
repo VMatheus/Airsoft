@@ -7,7 +7,6 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,16 +14,10 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import model.Equipe;
-import model.Usuario;
 
 public class RegistroEquipeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,10 +27,8 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
     private FirebaseAuth.AuthStateListener mAuthListener;
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
-    private Usuario endereco;
-    FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-    private Object usuario;
 
 
     @Override
@@ -47,6 +38,7 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
 
 
         registarEquipe = (Button) findViewById(R.id.registrarEquipe);
+        firebaseAuth.getCurrentUser().getUid();
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         progressDialog = new ProgressDialog(this);
@@ -69,10 +61,14 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
         }else {
 
+//            Esse metodo do FirebaseUser, está crashando e não sei por que
+            ********************** ve ai rick ********************
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            SharedPreferencesUser metodo = new SharedPreferencesUser(getApplicationContext());
             String id = mDatabase.push().getKey();
             Equipe equipe = new Equipe(id, nome, idLider);
             databaseReference.child("equipes").child(nome).setValue(equipe);
-            equipe.adicionaJogador((Usuario) usuario);
+            metodo.salvarUsuarioEquipe(user.getUid(), nome);
             Toast.makeText(this, "Informações Salvas!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class));
         }

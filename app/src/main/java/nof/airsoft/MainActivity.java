@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else if (item.getItemId() == R.id.navigation_minha_equipe) {
                 SharedPreferencesUser sharedPreferencesUser = new SharedPreferencesUser(getApplicationContext());
-                if(sharedPreferencesUser.possuiEquipe()){
+                if(sharedPreferencesUser.possuiEquipe() == true){
                     transaction.replace(R.id.content,new MinhaEquipeFragment()).addToBackStack(null).commit();
                 }else{
                     transaction.replace(R.id.content, new SemEquipeFragment()).addToBackStack(null).commit();
