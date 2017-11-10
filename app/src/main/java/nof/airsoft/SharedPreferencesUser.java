@@ -13,9 +13,7 @@ import java.util.Set;
 
 import model.Usuario;
 
-/**
- * Created by rickc on 27/10/2017.
- */
+
 
 public class SharedPreferencesUser {
 
@@ -47,12 +45,6 @@ public class SharedPreferencesUser {
         editor.apply();
     }
 
-    public void salvarUsuarioEquipe(String ident, String nomeJog){
-        editor.putString(CHAVE_IDENTIFICADOR, ident);
-        editor.putString(CHAVE_NOMEJOG, nomeJog);
-        editor.apply();
-    }
-
     //RECUPERANDO
     public String getIdentificador() {
         return preferencias.getString(CHAVE_IDENTIFICADOR, "");
@@ -71,7 +63,9 @@ public class SharedPreferencesUser {
     }
 
     public boolean possuiEquipe() {
-
+        if (getUsuarioNomeJog().contains(getUsuarioNome())){
+            return true;
+        }
         return false;
     }
 }

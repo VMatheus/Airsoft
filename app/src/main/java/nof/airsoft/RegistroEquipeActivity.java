@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.UUID;
+
 import model.Equipe;
 
 public class RegistroEquipeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -60,15 +62,10 @@ public class RegistroEquipeActivity extends AppCompatActivity implements View.On
         if (TextUtils.isEmpty(nome)) {
             Toast.makeText(this, "Por favor digite o nome", Toast.LENGTH_SHORT).show();
         }else {
-
-//            Esse metodo do FirebaseUser, está crashando e não sei por que
-            ********************** ve ai rick ********************
-            FirebaseUser user = firebaseAuth.getCurrentUser();
             SharedPreferencesUser metodo = new SharedPreferencesUser(getApplicationContext());
             String id = mDatabase.push().getKey();
             Equipe equipe = new Equipe(id, nome, idLider);
             databaseReference.child("equipes").child(nome).setValue(equipe);
-            metodo.salvarUsuarioEquipe(user.getUid(), nome);
             Toast.makeText(this, "Informações Salvas!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class));
         }
