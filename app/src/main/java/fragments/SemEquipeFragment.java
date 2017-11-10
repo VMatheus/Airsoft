@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -114,7 +115,7 @@ public class SemEquipeFragment extends Fragment {
 
 
         });
-
+        Toast.makeText(getActivity(), "sfasdfasdfsdfsdfsadf", Toast.LENGTH_SHORT).show();
         verificarEquipe();
         return view;
 
@@ -164,6 +165,7 @@ public class SemEquipeFragment extends Fragment {
     }
 
     private void carregarMenbros(String idEquipe) {
+        Toast.makeText(getActivity(), idEquipe, Toast.LENGTH_SHORT).show();
         membros_list = new ArrayList<>();
         new GetDataFromFirebase().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         referenceMembros = FirebaseDatabase.getInstance().getReference("equipes/" + idEquipe + "/" + "membros");
@@ -175,7 +177,7 @@ public class SemEquipeFragment extends Fragment {
                     membros_list.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Usuario usuario = snapshot.getValue(Usuario.class);
-
+                        Log.e("ggg",usuario.getUsuarioNome());
                         membros_list.add(usuario);
 
                     }

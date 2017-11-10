@@ -60,7 +60,7 @@ public class Equipe {
 
     }
 
-    public void adicionarMembro(Usuario usuario, String idEquipe) {
+    public void entrar(Usuario usuario, String idEquipe) {
         DatabaseReference reference2 = ConfiguracoesFirebase.getFirebase();
 
         reference2.child("equipes/").child(idEquipe).child("membros/").child(usuario.getIdUsuario()).setValue(usuario);
