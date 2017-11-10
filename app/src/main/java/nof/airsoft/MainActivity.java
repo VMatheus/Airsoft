@@ -19,7 +19,7 @@ import fragments.MinhaEquipeFragment;
 import fragments.SemEquipeFragment;
 import model.Usuario;
 
-import static model.Equipe.jogadores;
+
 
 public class MainActivity extends AppCompatActivity {
 
