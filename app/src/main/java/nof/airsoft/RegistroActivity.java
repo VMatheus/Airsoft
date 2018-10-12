@@ -50,8 +50,8 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
             }
         };
         progressDialog = new ProgressDialog(this);
-        editText_email = (EditText) findViewById(R.id.editText_email);
-        editText_senha = (EditText) findViewById(R.id.editText_senha);
+        editText_email = (EditText) findViewById(R.id.editEmail);
+        editText_senha = (EditText) findViewById(R.id.editPassword);
         textView_signin = (TextView) findViewById(R.id.textView_signin);
         buttonRegister.setOnClickListener(this);
         textView_signin.setOnClickListener(this);

@@ -1,0 +1,15 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/desconectar"
+        android:orderInCategory="100"
+
+        android:title="Desconectar"
+        app:showAsAction="collapseActionView" />
+   <!-- <item
+        android:id="@+id/action_settings"
+        android:title="Desconectar">
+    </item>-->
+
+</menu>

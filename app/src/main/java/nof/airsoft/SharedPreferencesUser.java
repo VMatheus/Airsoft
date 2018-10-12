@@ -63,9 +63,6 @@ public class SharedPreferencesUser {
     }
 
     public boolean possuiEquipe() {
-        if (getUsuarioNomeJog().contains(getUsuarioNome())){
-            return true;
-        }
-        return false;
+        return getUsuarioNomeJog().contains(getUsuarioNome());
     }
 }

@@ -7,4 +7,6 @@
     <string name="minha_equipe">Minha Equipe</string>
     <string name="equipes">Equipes</string>
     <string name="jogos_marcados">Jogos Marcados</string>
+    <string name="campo_obrigatorio">Campo obrigatório!</string>
+    <string name="email_invalido">Endereço invalido!</string>
 </resources>

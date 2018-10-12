@@ -17,7 +17,7 @@
         android:background="@drawable/input_background"
         android:layout_width="match_parent"
         android:hint="Email"
-        android:id="@+id/editText_email" />
+        android:id="@+id/editEmail" />
 
     <EditText
         android:layout_marginTop="10dp"
@@ -28,7 +28,7 @@
         android:background="@drawable/input_background"
         android:layout_width="match_parent"
         android:inputType="textPassword"
-        android:id="@+id/editText_senha"
+        android:id="@+id/editPassword"
         android:hint="Senha" />
 
     <Button

@@ -1,8 +1,6 @@
 package nof.airsoft;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,8 +17,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.CollationElementIterator;
-
-import model.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         buttonSignin = (Button) findViewById(R.id.buttonSignin);
-        editText_email = (EditText) findViewById(R.id.editText_email);
-        editText_senha = (EditText) findViewById(R.id.editText_senha);
-        textView_register = (TextView) findViewById(R.id.textView_register);
+        editText_email = (EditText) findViewById(R.id.editEmail);
+        editText_senha = (EditText) findViewById(R.id.editPassword);
+        textView_register = (TextView) findViewById(R.id.textRegister);
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override

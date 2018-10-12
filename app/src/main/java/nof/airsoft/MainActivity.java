@@ -24,9 +24,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+/*
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.customToolbar);
-        setSupportActionBar(toolbar);
+
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,10 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+*/
 
     }
 
-
+/*
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.tolbar, menu);
@@ -74,5 +76,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
-    }
+    }*/
 }
